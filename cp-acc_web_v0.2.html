@@ -594,17 +594,7 @@ function getAnswer() {
 
 async function init() {
 
-	var div = document.createElement("div");
-	div.className = "thumbnail";
-	var body = document.getElementsByTagName('body')[0];
-	body.appendChild(div);
-
-	var tn = document.getElementsByClassName("thumbnail")[0]
-
-	var img = document.createElement("img");
-	img.src = "";
-	img.id = "upload";
-	tn.appendChild(img);
+	await addHTML();
 
 	//pixel data
 	//console.log("Platform = ", navigator.platform);
@@ -666,6 +656,21 @@ async function init() {
   	//console.log(canvas)
   	await enableEHSicons();
   	//enableCP();
+
+}
+
+function addHTML(){
+
+	var div = document.createElement("div");
+	div.className = "thumbnail";
+	var body = document.getElementsByTagName('body')[0];
+	body.appendChild(div);
+
+	var img = document.createElement("img");
+	img.src = "";
+	img.id = "upload";
+	var tn = document.getElementsByClassName("thumbnail")[0]
+	tn.appendChild(img);
 
 }
 
