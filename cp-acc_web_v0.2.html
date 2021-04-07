@@ -648,11 +648,11 @@ async function init() {
   	var dataUrl = await getDataUrl("https://static.wixstatic.com/media/6068b5_5888cb03ab9643febc221f3e6788d656~mv2.jpg");
   	//console.log(dataUrl);
   	//Create new image on body tag with dataurl
-  	addBase64Image(dataUrl);
-  	addCanvas();
+  	await addBase64Image(dataUrl);
+  	await addCanvas();
   	//console.log("canvas");
   	//console.log(canvas)
-  	enableEHSicons();
+  	await enableEHSicons();
   	//enableCP();
 
 }
