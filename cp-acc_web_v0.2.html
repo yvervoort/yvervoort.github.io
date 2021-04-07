@@ -429,12 +429,20 @@ style.backgroundColor
 	var cpsig1 = "";
 	var cpsig2 = "";
 	var instance;
+
+	document.addEventListener('DOMContentLoaded', function(){
+	    //Wait to add event listeners until the DOM is fully loaded. This is needed
+	    // when wanting to access elements that are later in the HTML than the <script>.
+	    init();
+	});
 </script>
+
+
 </head>
 
 <!-- <body onload="init()"> -->
-<!-- <body> -->
-<body onload="init()">
+<body>
+<!-- <body onload="init()"> -->
 	<!-- {{Body}} -->
 
 
@@ -453,9 +461,9 @@ style.backgroundColor
 </div>-->
 <!-- <div class="flyout-debug" id="flyout-debug"></div> -->
 <!-- <button class="preview_test" id="preview_test"></button> -->
-<!-- <div class="thumbnail">
+<div class="thumbnail">
 	<img id="upload" alt="" src="">
-</div> --> 
+</div> 
 <!-- <div class="result">
 	<span>HEX: <strong id="hex"></strong></span>
 	<span>RGB: <strong id="rgb"></strong></span>
@@ -594,7 +602,7 @@ function getAnswer() {
 
 async function init() {
 
-	await addHTML();
+	//await addHTML();
 
 	//pixel data
 	//console.log("Platform = ", navigator.platform);
