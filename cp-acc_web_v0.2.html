@@ -453,9 +453,9 @@ style.backgroundColor
 </div>-->
 <!-- <div class="flyout-debug" id="flyout-debug"></div> -->
 <!-- <button class="preview_test" id="preview_test"></button> -->
-<div class="thumbnail">
+<!-- <div class="thumbnail">
 	<img id="upload" alt="" src="">
-</div>
+</div> --> 
 <!-- <div class="result">
 	<span>HEX: <strong id="hex"></strong></span>
 	<span>RGB: <strong id="rgb"></strong></span>
@@ -593,6 +593,20 @@ function getAnswer() {
 <script type="text/javascript">
 
 async function init() {
+
+	var div = document.createElement("div");
+	div.className = "thumbnail";
+	var body = document.getElementsByTagName('body')[0];
+	body.appendChild(div);
+
+	var img = document.createElement("img");
+	img.src = "";
+	img.id = "upload";
+	var tn = document.getElementsByClassName("thumbnail")
+	tn.appendChild(img);
+
+
+
 
 	//pixel data
 	//console.log("Platform = ", navigator.platform);
