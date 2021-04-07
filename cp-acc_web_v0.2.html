@@ -599,14 +599,12 @@ async function init() {
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(div);
 
+	var tn = document.getElementsByClassName("thumbnail")[0]
+
 	var img = document.createElement("img");
 	img.src = "";
 	img.id = "upload";
-	var tn = document.getElementsByClassName("thumbnail")[0]
 	tn.appendChild(img);
-
-
-
 
 	//pixel data
 	//console.log("Platform = ", navigator.platform);
