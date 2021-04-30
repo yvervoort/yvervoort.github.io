@@ -654,10 +654,14 @@ function addCanvas(){
 
 // check img resize
 function checkCanvasSize(el, image){
-	console.log("checkCanvasSize")
+	console.log("--- Compare canvas to image --- ")
+	console.log("canvas:")
+	console.log(el.width);
+	console.log(el.height);
+	console.log("image:")
 	console.log(image.width);
 	console.log(image.height);
-	return el.width == image.width && el.height == image.height;
+	return el.width == image.width && el.height == image.height; //check if el.width == image.width && el.height == image.height
 }
 
 // canvas function
