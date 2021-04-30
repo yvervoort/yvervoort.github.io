@@ -574,8 +574,8 @@ function addCanvas(){
 	//activate panzoom
 	instance = panzoom(area, {
 	  zoomDoubleClickSpeed: 1, //When double clicking, zoom is multiplied by zoomDoubleClickSpeed, which means that a value of 1 will disable double click zoom completely.
-	  disablePan: false,
-	  disableZoom: false,
+	  disablePan: false, //Allow pan
+	  disableZoom: false, //Allow zoom
 	  maxZoom: 20,
 	  minZoom: 1, //enable zoom-out after zoom-in only
 	  bounds: true,
@@ -636,11 +636,10 @@ function addCanvas(){
   		}
 	});
 
-	inst.img = img_upload; //is this assignment causing the issue?
-	//console.log(inst.img);
+	inst.img = img_upload;
 
-	inst.canvas = document.createElement('canvas');
-	inst.img.parentNode.insertBefore(inst.canvas, inst.img.nextSibling);
+	inst.canvas = document.createElement('canvas'); //A canvas is a rectangular area on an HTML page. By default, a canvas has no border and no content.
+	inst.img.parentNode.insertBefore(inst.canvas, inst.img.nextSibling); //insertBefore(newNode, referenceNode) - referenceNode is the node before which newNode is inserted
 	inst.canvas.style.display = 'none';
 
 	// default first pixel canvas
@@ -655,18 +654,16 @@ function addCanvas(){
 
 // check img resize
 function checkCanvasSize(el, image){
+	console.log("checkCanvasSize")
+	console.log(image.width);
+	console.log(image.height);
 	return el.width == image.width && el.height == image.height;
 }
 
 // canvas function
 function useCanvas(el, image, callback){
-	console.log("useCanvas")
-	console.log(image);
-	//https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
-	//console.log(el.width);
-	//console.log(el.height);
 	if(!checkCanvasSize(el, image)){
-		console.log("checkCanvasSize")
+		console.log("Resize")
 		el.width = image.width; // img width
 		el.height = image.height; // img height
 
@@ -678,13 +675,15 @@ function useCanvas(el, image, callback){
 		console.log(el)
 		console.log(el.getContext('2d'))
 	} else {
-		console.log("else ...")
+		console.log("No resize")
 		console.log(image.style.transform)
-		//if no transformation - do nothing
-		//if transformation - do "something"
-		if(image.style.transform !== "matrix(1, 0, 0, 1, 0, 0)"){
-			//- draw transformed image onto canvas
+
+		if(image.style.transform !== "matrix(1, 0, 0, 1, 0, 0)"){ //transformation - do "something"
+			//- draw transformed image onto canvas - void ctx.drawImage(image, dx, dy, dWidth, dHeight);
 			el.getContext('2d').drawImage(image, 0, 0, image.width, image.height);
+			console.log("Issue!!!")
+		} else {
+			//no transformation - do nothing
 		}
 	}
 	return callback();
