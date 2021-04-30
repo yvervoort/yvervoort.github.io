@@ -662,6 +662,7 @@ function checkCanvasSize(el, image){
 
 // canvas function
 function useCanvas(el, image, callback){
+	console.log(checkCanvasSize(el, image));
 	if(!checkCanvasSize(el, image)){
 		console.log("Resize")
 		el.width = image.width; // img width
