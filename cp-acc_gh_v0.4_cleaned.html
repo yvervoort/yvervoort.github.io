@@ -684,12 +684,13 @@ function useCanvas(el, image, callback){
 		console.log(image.style.transform) //e.g. matrix(7.0443, 0, 0, 7.0443, -761.582, -1619.87) / matrix( scaleX, skewY, skewX, scaleY, translateX, translateY )
 		var regEx = /-?\d*\.?\d+/g;
 		var tf = image.style.transform.match(regEx);
-		console.log(tf);
+		console.log(tf[4]);
+		console.log(tf[5]);
 		if(image.style.transform !== "matrix(1, 0, 0, 1, 0, 0)"){ //transformation - do "something"
 			//- draw transformed image onto canvas - void ctx.drawImage(image, dx, dy, dWidth, dHeight);
 			//el.getContext('2d').drawImage(image, 0, 0, image.width, image.height);
 			//https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
-			el.getContext('2d').drawImage(image, sx, sy, image.width, image.height, 0, 0, image.width, image.height); //drawImage
+			el.getContext('2d').drawImage(image, tf[4], tf[5], image.width, image.height, 0, 0, image.width, image.height); //drawImage
  
 
 		} else {
